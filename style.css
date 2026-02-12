@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    overflow: hidden; /* Penting agar GIF background tidak scroll */
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Agar teks jelas di atas GIF */
+}
+
+.full-screen-gif {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3eXp4eXp4eXp4eXp4eXp4eXp4eXp4eXp4eXp4eXp4&ep=v1_gifs_search&rid=giphy.gif&ct=g'); /* GIF default */
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* Pastikan di belakang konten */
+    filter: brightness(0.8); /* Agak gelap agar teks lebih mudah dibaca */
+    transition: background-image 1s ease-in-out; /* Animasi pergantian GIF */
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparan */
+    backdrop-filter: blur(8px); /* Efek blur/kaca */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: fadeIn 1.5s ease-out; /* Animasi card muncul */
+}
+
+h1#main-text {
+    font-family: 'Dancing Script', cursive; /* Font script untuk judul */
+    font-size: 3.5rem;
+    color: #ffe0e6; /* Pink muda */
+    margin-bottom: 20px;
+    opacity: 0; /* Awalnya sembunyi */
+    animation: textFadeIn 1s forwards; /* Animasi muncul teks */
+}
+
+p.sub-text {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin: 10px 0;
+    line-height: 1.6;
+    opacity: 0; /* Awalnya sembunyi */
+    animation: textFadeIn 0.8s forwards;
+    animation-delay: var(--delay); /* Delay unik untuk setiap teks */
+}
+
+.buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Jarak antar tombol */
+    opacity: 0; /* Awalnya sembunyi */
+    animation: buttonsFadeIn 0.8s forwards;
+    animation-delay: 2s; /* Muncul setelah teks */
+}
+
+button {
+    background-color: #ff69b4; /* Pink cerah */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+button:hover {
+    background-color: #e91e63; /* Pink gelap saat hover */
+    transform: scale(1.05);
+}
+
+#noBtn {
+    background-color: #f0f0f0; /* Tombol No warna abu-abu */
+    color: #444;
+    position: relative; /* Penting untuk manipulasi posisi */
+}
+
+/* Animasi untuk hujan hati */
+@keyframes fall {
+    to { transform: translateY(110vh) scale(0.5); opacity: 0; }
+}
+.heart-fall {
+    animation: fall 5s linear forwards;
+    position: absolute;
+    pointer-events: none;
+    z-index: 1000;
+    color: #ff69b4; /* Hati berwarna pink */
+}
+
+/* Keyframes untuk Animasi */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes textFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes buttonsFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
